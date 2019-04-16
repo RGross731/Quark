@@ -1,0 +1,28 @@
+body {
+	background: #343a40;
+}
+
+.draggable-box {
+	border-radius: 10px;
+	position: absolute;
+	background: #212529;
+	padding: 0;
+	width: 200px;
+	height: 300px;
+	border-style: solid;
+	border-color: #e9ecef;
+	border-width: 2px;
+}
+
+.panel-header {
+	border-radius: 7px 7px 0px 0px;
+	background: #33bbff;
+	padding: 0;
+	margin: 2px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	font-family: Courier New;
+	font-weight: bold;
+	color: #ffffff;
+}
