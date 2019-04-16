@@ -22,7 +22,15 @@ body {
 	height: 40px;
 	text-align: center;
 	line-height: 40px;
-	font-family: Courier New;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	font-weight: bold;
 	color: #ffffff;
+}
+
+.panel {
+	position: absolute;
+	left: 100px;
+	top: 100px;
+	background: #e9ecef;
+	width: 200px;
 }
