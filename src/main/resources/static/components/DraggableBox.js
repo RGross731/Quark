@@ -1,7 +1,7 @@
 class DraggableBox extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {x: 100, y: 100, xOffset: 0, yOffset: 0, dragging: false, cursor: '-webkit-grab'};
+		this.state = {x: 100, y: 400, xOffset: 0, yOffset: 0, dragging: false, cursor: '-webkit-grab'};
 	}
 	
 	handleMouseDown = (e) => {
