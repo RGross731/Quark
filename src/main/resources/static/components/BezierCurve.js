@@ -22,7 +22,7 @@ class BezierCurve extends React.Component {
 				<svg viewBox="0 0 200 200" onMouseMove={this.state.draggingHandle ? this.handleMouseMove : undefined} onMouseUp={this.state.draggingHandle ? this.handleMouseUp : undefined}>
 					<Line from={this.state.controlPoint} to={this.state.startPoint}/>
 					<Line from={this.state.controlPoint} to={this.state.endPoint}/>
-					<Curve startPoint={this.state.startPoint} controlPoint={this.state.controlPoint} endPoint={this.state.endPoint}/>
+					<Curve commands={`M ${this.state.startPoint.x} ${this.state.startPoint.y} Q ${this.state.controlPoint.x} ${this.state.controlPoint.y} ${this.state.endPoint.x} ${this.state.endPoint.y}`}/>
 					<Handle coordinates={this.state.startPoint} onMouseDown={(e) => this.handleMouseDown(e, 'startPoint')} cursor={this.state.cursor} fill={"#33bbff"} size={8}/>
 					<Handle coordinates={this.state.endPoint} onMouseDown={(e) => this.handleMouseDown(e, 'endPoint')} cursor={this.state.cursor} fill={"#33bbff"} size={8}/>
 					<Handle coordinates={this.state.controlPoint} onMouseDown={(e) => this.handleMouseDown(e, 'controlPoint')} cursor={this.state.cursor} fill={"#e9ecef"} size={4}/>
