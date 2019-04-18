@@ -3,8 +3,9 @@ class QuarkApp extends React.Component {
 		return (
 			<div>
 				<BezierCurve />
-				<ConnectingCurve />	
-				<DraggableBox />	
+				<ConnectingCurve />
+				<DraggableCurve />
+				<DraggableBox />
 			</div>
 		);
 	}

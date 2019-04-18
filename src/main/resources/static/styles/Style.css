@@ -41,3 +41,11 @@ body {
 	background: #e9ecef;
 	width: 200px;
 }
+
+.panel3 {
+	position: absolute;
+	left: 700px;
+	top: 100px;
+	background: #e9ecef;
+	width: 200px;
+}
