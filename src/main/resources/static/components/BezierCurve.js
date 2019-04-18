@@ -18,7 +18,7 @@ class BezierCurve extends React.Component {
 	
 	render() {
 		return (
-			<div className="panel"> 
+			<div className="panel1"> 
 				<svg viewBox="0 0 200 200" onMouseMove={this.state.draggingAnchor ? this.handleMouseMove : undefined} onMouseUp={this.state.draggingAnchor ? this.handleMouseUp : undefined}>
 					<Line from={this.state.controlPoint} to={this.state.startPoint}/>
 					<Line from={this.state.controlPoint} to={this.state.endPoint}/>

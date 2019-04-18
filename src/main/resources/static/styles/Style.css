@@ -26,12 +26,13 @@ body {
 	color: #ffffff;
 }
 
-.panel {
+.panel1 {
 	position: absolute;
 	left: 100px;
 	top: 100px;
 	background: #e9ecef;
 	width: 200px;
+	height: 200px;
 }
 
 .panel2 {
@@ -40,6 +41,7 @@ body {
 	top: 100px;
 	background: #e9ecef;
 	width: 200px;
+	height: 200px;
 }
 
 .panel3 {
@@ -48,4 +50,14 @@ body {
 	top: 100px;
 	background: #e9ecef;
 	width: 200px;
+	height: 200px;
+}
+
+.panel4 {
+	position: absolute;
+	left: 1000px;
+	top: 100px;
+	background: #e9ecef;
+	width: 200px;
+	height: 200px;
 }
