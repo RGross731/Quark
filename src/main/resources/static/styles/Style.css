@@ -1,29 +1,31 @@
 body {
-	background: #343a40;
+	background: #212121;
+	margin: 0;
+	overflow: hidden;
 }
 
 .draggable-box {
-	border-radius: 10px;
+	border-radius: 4px;
 	position: absolute;
-	background: #212529;
-	padding: 0;
+	background: #2E2E2E;
 	width: 200px;
-	height: 300px;
-	border-style: solid;
-	border-color: #e9ecef;
-	border-width: 2px;
+	line-height: 0;
 }
 
 .panel-header {
-	border-radius: 7px 7px 0px 0px;
-	background: #33bbff;
-	padding: 0;
-	margin: 2px;
-	height: 40px;
+	border-radius: 4px 4px 0px 0px;
+	background-color: #ff4444;
+	height: 30px;
 	text-align: center;
-	line-height: 40px;
+	line-height: 30px;
 	font-family: 'Open Sans', sans-serif;
 	color: #ffffff;
+}
+
+.panel-footer {
+	border-radius: 0px 0px 4px 4px;
+	background-color: #212121;
+	height: 10px;
 }
 
 .panel1 {

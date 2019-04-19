@@ -23,9 +23,10 @@ class DraggableBox extends React.Component {
 				<div className="panel-header" draggable onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} style={{cursor:this.state.cursor}}>
 					Sample Object
 				</div>
-				<svg viewBox="0 0 200 300">
-					<ellipse cx={184} cy={32} rx={8} ry={8} fill="rgb(0,0,0)" stroke="rgb(255,255,255" strokeWidth={2}/>
+				<svg viewBox="0 0 200 50">
+					<ellipse cx={184} cy={25} rx={8} ry={8} fill="rgb(0,0,0)" stroke="rgb(255,255,255" strokeWidth={2}/>
 				</svg>
+				<div className="panel-footer"/>
 			</div>
 		);
 	}
