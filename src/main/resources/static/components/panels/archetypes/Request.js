@@ -1,4 +1,4 @@
-class PostMapping extends React.Component {
+class Request extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {x: props.x, y: props.y, xOffset: 0, yOffset: 0, dragging: false, cursor: '-webkit-grab'};
@@ -20,11 +20,9 @@ class PostMapping extends React.Component {
 	render() {		
 		return (
 			<Panel x={this.state.x} y={this.state.y}>
-				<Header onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} icon={"fas fa-network-wired"} text={"POST Mapping"} cursor={this.state.cursor} color={"#ff4444"} darkColor={"#cc0000"}/>
-				<InputVariable color={"#33b5e5"} text={"Path"}/>
-				<InputVariable color={"#00c851"} text={"Request"}/>
-				<OutputVariable color={"#ff4444"} text={""}/>
-				<Footer color={"#ff4444"} lightColor={"#ff5252"}/>
+				<Header onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} icon={"far fa-file"} text={"Request"} cursor={this.state.cursor} color={"#00c851"} darkColor={"#007e33"}/>
+				<OutputVariable color={"#00c851"} text={""}/>
+				<Footer color={"#00c851"} lightColor={"#00e676"}/>
 			</Panel>
 		);
 	}

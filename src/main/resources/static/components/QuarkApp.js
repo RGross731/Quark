@@ -47,7 +47,8 @@ class QuarkApp extends React.Component {
 				<DraggableCurve />
 				<DrawableCurve />
 				*/}
-				<PostMapping x={100} y={200} />
+				<Request x={100} y={200} />
+				<PostMapping x={400} y={200} />
 			</div>
 		);
 	}
