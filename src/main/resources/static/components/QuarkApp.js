@@ -46,8 +46,8 @@ class QuarkApp extends React.Component {
 				<ConnectingCurve />
 				<DraggableCurve />
 				<DrawableCurve />
-				<DraggableBox />
 				*/}
+				<DraggableBox />
 			</div>
 		);
 	}

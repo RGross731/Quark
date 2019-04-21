@@ -8,6 +8,7 @@ body {
 	border-radius: 4px;
 	position: absolute;
 	background: #2E2E2E;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 	width: 200px;
 	line-height: 0;
 }
@@ -16,7 +17,8 @@ body {
 	border-radius: 4px 4px 0px 0px;
 	background-color: #ff4444;
 	height: 30px;
-	text-align: center;
+	text-align: left;
+	padding-left: 10px;
 	line-height: 30px;
 	font-family: 'Open Sans', sans-serif;
 	color: #ffffff;
@@ -24,7 +26,7 @@ body {
 
 .panel-footer {
 	border-radius: 0px 0px 4px 4px;
-	background-color: #212121;
+	background-color: #ff4444;
 	height: 10px;
 }
 

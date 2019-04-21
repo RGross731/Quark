@@ -3,7 +3,7 @@ function Curve(props) {
 		<path 
 			d={props.commands} 
 			fill="none" 
-			stroke="#33bbff" 
+			stroke="#ffbb33"
 			strokeWidth={4}
 		/>
 	);

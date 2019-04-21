@@ -20,11 +20,11 @@ class DraggableBox extends React.Component {
 	render() {
 		return (
 			<div className="draggable-box" style={{left: this.state.x, top: this.state.y}}>
-				<div className="panel-header" draggable onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} style={{cursor:this.state.cursor}}>
-					Sample Object
+				<div className="panel-header" draggable onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} style={{cursor: this.state.cursor}}>
+					<i className="fas fa-network-wired" style={{paddingRight: 10}}></i>Rest Controller
 				</div>
 				<svg viewBox="0 0 200 50">
-					<ellipse cx={184} cy={25} rx={8} ry={8} fill="rgb(0,0,0)" stroke="rgb(255,255,255" strokeWidth={2}/>
+					Test<ellipse cx={184} cy={25} rx={8} ry={8} fill="rgb(0,0,0)" stroke="rgb(255,255,255" strokeWidth={2}/>
 				</svg>
 				<div className="panel-footer"/>
 			</div>
