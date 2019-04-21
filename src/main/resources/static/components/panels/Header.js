@@ -2,6 +2,7 @@ function Header(props) {
 	const style = {
 		cursor: props.cursor,
 		borderRadius: "4px 4px 0px 0px",
+		//background: `linear-gradient(to right, ${props.color}, #cc0000)`,
 		backgroundColor: props.color,
 		height: "30px",
 		textAlign: "left",

@@ -1,6 +1,6 @@
 function InputVariable(props) {
 	const style = {
-		backgroundColor: props.color,
+		backgroundColor: "#2E2E2E",
 		height: "40px",
 		textAlign: "left",
 		paddingLeft: "10px",
@@ -12,7 +12,7 @@ function InputVariable(props) {
 	
 	return (
 		<div style={style}>
-			<i className="far fa-circle fa-sm" style={{paddingRight: 10, fill: "#ffffff"}}></i>{props.text}
+			<i className="far fa-circle fa-sm" style={{paddingRight: 10, color: props.color}}></i>{props.text}
 		</div>
 	);
 }

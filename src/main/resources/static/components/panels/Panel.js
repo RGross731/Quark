@@ -31,8 +31,8 @@ class Panel extends React.Component {
 		return (
 			<div style={style}>
 				<Header onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} icon={"fas fa-network-wired"} text={"REST Endpoint"} cursor={this.state.cursor} color={"#ff4444"}/>
-				<InputVariable color={"#2E2E2E"} text={"Input Variable"}/>
-				<OutputVariable color={"#2E2E2E"} text={"Output Variable"}/>
+				<InputVariable color={"#00c851"} text={"Request"}/>
+				<OutputVariable color={"#ff4444"} text={""}/>
 				<Footer color={"#616161"}/>
 			</div>
 		);

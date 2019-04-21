@@ -1,6 +1,6 @@
 function OutputVariable(props) {
 	const style = {
-		backgroundColor: props.color,
+		backgroundColor: "#2E2E2E",
 		height: "40px",
 		textAlign: "right",
 		paddingLeft: "10px",
@@ -12,7 +12,7 @@ function OutputVariable(props) {
 	
 	return (
 		<div style={style}>
-			{props.text}<i className="far fa-circle fa-sm" style={{paddingLeft: 10, fill: "#ffffff"}}></i>
+			{props.text}<i className="far fa-circle fa-sm" style={{paddingLeft: 10, color: props.color}}></i>
 		</div>
 	);
 }
