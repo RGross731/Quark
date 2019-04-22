@@ -41,6 +41,9 @@ class QuarkApp extends React.Component {
 		
 		return (
 			<div onMouseMove={this.state.drag ? this.handleMouseMove : undefined} onMouseUp={this.state.drag ? this.handleMouseUp : undefined}>
+				<svg viewBox={`0 0 ${this.state.width} ${this.state.height}`}>
+					{this.state.drag && <Curve commands={commands}/>}
+				</svg>
 				{/*
 				<BezierCurve />
 				<ConnectingCurve />
@@ -49,9 +52,6 @@ class QuarkApp extends React.Component {
 				*/}
 				<Request x={100} y={200} />
 				<PostMapping x={400} y={200} onAnchorMouseDown={this.handleMouseDown}/>
-				<svg viewBox={`0 0 ${this.state.width} ${this.state.height}`} style={{position: "absolute", pointerEvents: "none"}}>
-					{this.state.drag && <Curve commands={commands}/>}
-				</svg>
 			</div>
 		);
 	}
