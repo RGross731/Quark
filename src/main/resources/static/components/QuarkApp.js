@@ -1,7 +1,7 @@
 class QuarkApp extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {width: 0, height: 0, drag: false, start: {x: 0, y: 0}, cursor: {x: 0, y: 0}};
+		this.state = {window: {width: 0, height: 0}, drag: false, start: {x: 0, y: 0}, cursor: {x: 0, y: 0}};
 	}
 	
 	componentDidMount = () => {
@@ -14,7 +14,7 @@ class QuarkApp extends React.Component {
 	}
 
 	updateWindowDimensions = () => {
-		this.setState({width: window.innerWidth, height: window.innerHeight});
+		this.setState({window: {width: window.innerWidth, height: window.innerHeight}});
 	}
 	
 	handleMouseDown = (e) => {
@@ -45,7 +45,7 @@ class QuarkApp extends React.Component {
 		
 		return (
 			<div onMouseMove={this.state.drag ? this.handleMouseMove : undefined} onMouseUp={this.state.drag ? this.handleMouseUp : undefined}>
-				<svg viewBox={`0 0 ${this.state.width} ${this.state.height}`}>
+				<svg viewBox={`0 0 ${this.state.window.width} ${this.state.window.height}`}>
 					{this.state.drag && <Curve commands={commands}/>}
 					{this.state.curve && <Curve commands={`M ${this.state.curve.start.x} ${this.state.curve.start.y} C ${(this.state.curve.start.x + this.state.curve.end.x) / 2} ${this.state.curve.start.y} ${(this.state.curve.start.x + this.state.curve.end.x) / 2} ${this.state.curve.end.y} ${this.state.curve.end.x} ${this.state.curve.end.y}`}/>}
 				</svg>
