@@ -1,10 +1,10 @@
 function Footer(props) {
 	const style = {
 		borderRadius: "0px 0px 4px 4px",
-		backgroundColor: props.color,
+		backgroundColor: props.colors.normal,
 		height: "4px",
-		borderTop: `1px solid ${props.lightColor}`,
-		borderBottom: `1px solid ${props.darkColor}`,
+		borderTop: `1px solid ${props.colors.light}`,
+		borderBottom: `1px solid ${props.colors.dark}`,
 		marginTop: "1px"
 	};
 	

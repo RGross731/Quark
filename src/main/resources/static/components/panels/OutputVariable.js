@@ -16,7 +16,7 @@ function OutputVariable(props) {
 	
 	return (
 		<div style={style}>
-			{props.text}<i className="far fa-circle fa-sm" style={{paddingLeft: 10, color: props.color}}></i>
+			{props.text}<i className="far fa-circle fa-sm" onMouseDown={props.onAnchorMouseDown} onMouseUp={props.onAnchorMouseUp} style={{paddingLeft: 10, color: props.color}}></i>
 		</div>
 	);
 }

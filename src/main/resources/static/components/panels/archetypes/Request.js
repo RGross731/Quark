@@ -17,12 +17,18 @@ class Request extends React.Component {
 		this.setState({dragging: false, cursor: '-webkit-grab'});
 	}
 	
-	render() {		
+	render() {	
+		const colors = {
+			normal: "#00c851",
+			light: "#00e676",
+			dark: "#007e33"
+		};
+		
 		return (
 			<Panel x={this.state.x} y={this.state.y}>
-				<Header onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} icon={"far fa-file"} text={"Request"} cursor={this.state.cursor} color={"#00c851"} lightColor={"#00e676"} darkColor={"#007e33"}/>
-				<OutputVariable color={"#00c851"} text={""}/>
-				<Footer color={"#00c851"} lightColor={"#00e676"} darkColor={"#007e33"}/>
+				<Header onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} icon={"far fa-file"} text={"Request"} cursor={this.state.cursor} colors={colors}/>
+				<OutputVariable color={"#00c851"} text={""} onAnchorMouseDown={this.props.onAnchorMouseDown} onAnchorMouseUp={this.props.onAnchorMouseUp}/>
+				<Footer colors={colors}/>
 			</Panel>
 		);
 	}
