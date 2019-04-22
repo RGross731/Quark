@@ -2,8 +2,8 @@ class DraggableCurve extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-				anchors: {left: {x: 32, y: 50, h: false}, right: {x: 168, y: 150, h: false}},
-				cursor: '-webkit-grab'
+			anchors: {left: {x: 32, y: 50, h: false}, right: {x: 168, y: 150, h: false}},
+			cursor: '-webkit-grab'
 		};
 	}
 	

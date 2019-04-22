@@ -4,6 +4,7 @@ function Footer(props) {
 		backgroundColor: props.color,
 		height: "4px",
 		borderTop: `1px solid ${props.lightColor}`,
+		borderBottom: `1px solid ${props.darkColor}`,
 		marginTop: "1px"
 	};
 	

@@ -16,7 +16,7 @@ function InputVariable(props) {
 	
 	return (
 		<div style={style}>
-			<i className="far fa-circle fa-sm" style={{paddingRight: 10, color: props.color}}></i>{props.text}
+			<i className="far fa-circle fa-sm" onMouseDown={props.onAnchorMouseDown} style={{paddingRight: 10, color: props.color}}></i>{props.text}
 		</div>
 	);
 }

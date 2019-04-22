@@ -5,17 +5,20 @@ class QuarkApp extends React.Component {
 	}
 	
 	handleMouseDown = (e) => {
+		e.preventDefault();
 		this.setState({drag: true, start: {x: e.pageX, y: e.pageY}, cursor: {x: e.pageX, y: e.pageY}});
 	}
 	
 	handleMouseMove = (e) => {
+		e.preventDefault();
 		this.setState({cursor: {x: e.pageX, y: e.pageY}});
 	}
 	
 	handleMouseUp = (e) => {
+		e.preventDefault();
 		this.setState({drag: false});
 	}
-
+	
 	componentDidMount = () => {
 		this.updateWindowDimensions();
 		window.addEventListener('resize', this.updateWindowDimensions);
@@ -37,10 +40,7 @@ class QuarkApp extends React.Component {
 		const commands = `M ${startP.x} ${startP.y} C ${startCP.x} ${startCP.y} ${endCP.x} ${endCP.y} ${endP.x} ${endP.y}`;
 		
 		return (
-			<div>
-				<svg viewBox={`0 0 ${this.state.width} ${this.state.height}`} onMouseDown={this.handleMouseDown} onMouseMove={this.state.drag ? this.handleMouseMove : undefined} onMouseUp={this.state.drag ? this.handleMouseUp : undefined}>
-					{this.state.drag && <Curve commands={commands}/>}
-				</svg>
+			<div onMouseMove={this.state.drag ? this.handleMouseMove : undefined} onMouseUp={this.state.drag ? this.handleMouseUp : undefined}>
 				{/*
 				<BezierCurve />
 				<ConnectingCurve />
@@ -48,7 +48,10 @@ class QuarkApp extends React.Component {
 				<DrawableCurve />
 				*/}
 				<Request x={100} y={200} />
-				<PostMapping x={400} y={200} />
+				<PostMapping x={400} y={200} onAnchorMouseDown={this.handleMouseDown}/>
+				<svg viewBox={`0 0 ${this.state.width} ${this.state.height}`} style={{position: "absolute", pointerEvents: "none"}}>
+					{this.state.drag && <Curve commands={commands}/>}
+				</svg>
 			</div>
 		);
 	}

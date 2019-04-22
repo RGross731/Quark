@@ -11,6 +11,7 @@ function Header(props) {
 		lineHeight: "30px",
 		fontFamily: "Open Sans",
 		color: "#ffffff",
+		borderTop: `1px solid ${props.lightColor}`,
 		borderBottom: `1px solid ${props.darkColor}`,
 		marginBottom: "1px",
 		textShadow: `1px 1px ${props.darkColor}`

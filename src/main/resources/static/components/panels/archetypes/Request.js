@@ -20,9 +20,9 @@ class Request extends React.Component {
 	render() {		
 		return (
 			<Panel x={this.state.x} y={this.state.y}>
-				<Header onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} icon={"far fa-file"} text={"Request"} cursor={this.state.cursor} color={"#00c851"} darkColor={"#007e33"}/>
+				<Header onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} icon={"far fa-file"} text={"Request"} cursor={this.state.cursor} color={"#00c851"} lightColor={"#00e676"} darkColor={"#007e33"}/>
 				<OutputVariable color={"#00c851"} text={""}/>
-				<Footer color={"#00c851"} lightColor={"#00e676"}/>
+				<Footer color={"#00c851"} lightColor={"#00e676"} darkColor={"#007e33"}/>
 			</Panel>
 		);
 	}

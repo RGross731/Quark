@@ -20,11 +20,11 @@ class PostMapping extends React.Component {
 	render() {		
 		return (
 			<Panel x={this.state.x} y={this.state.y}>
-				<Header onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} icon={"fas fa-network-wired"} text={"POST Mapping"} cursor={this.state.cursor} color={"#ff4444"} darkColor={"#cc0000"}/>
-				<InputVariable color={"#33b5e5"} text={"Path"}/>
+				<Header onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} icon={"fas fa-network-wired"} text={"POST Mapping"} cursor={this.state.cursor} color={"#ff4444"} lightColor={"#ff5252"} darkColor={"#cc0000"}/>
+				<InputVariable color={"#33b5e5"} text={"Path"} onAnchorMouseDown={this.props.onAnchorMouseDown}/>
 				<InputVariable color={"#00c851"} text={"Request"}/>
-				<OutputVariable color={"#ff4444"} text={""}/>
-				<Footer color={"#ff4444"} lightColor={"#ff5252"}/>
+				<OutputVariable color={"#ff4444"}/>
+				<Footer color={"#ff4444"} lightColor={"#ff5252"} darkColor={"#cc0000"}/>
 			</Panel>
 		);
 	}
