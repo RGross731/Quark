@@ -78,12 +78,12 @@ class QuarkApp extends React.Component {
 		
 		return (
 			<div onMouseMove={this.state.input.drag ? this.handleMouseMove : undefined} onMouseUp={this.state.input.drag ? this.handleMouseUp : undefined}>
+				<Request details={this.state.requestPanel} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>
+				<PostMapping details={this.state.postMappingPanel} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>
 				<svg viewBox={`0 0 ${this.state.window.width} ${this.state.window.height}`}>
 					{this.state.input.drag && <Curve commands={commands}/>}
 					{this.state.curve && <Curve commands={`M ${this.state.curve.start.x + this.state.requestPanel.x} ${this.state.curve.start.y + this.state.requestPanel.y} C ${(this.state.curve.start.x  + this.state.requestPanel.x + this.state.curve.end.x  + this.state.postMappingPanel.x) / 2} ${this.state.curve.start.y + this.state.requestPanel.y} ${(this.state.curve.start.x  + this.state.requestPanel.x + this.state.curve.end.x  + this.state.postMappingPanel.x) / 2} ${this.state.curve.end.y + this.state.postMappingPanel.y} ${this.state.curve.end.x + this.state.postMappingPanel.x} ${this.state.curve.end.y + this.state.postMappingPanel.y}`}/>}
 				</svg>
-				<Request details={this.state.requestPanel} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>
-				<PostMapping details={this.state.postMappingPanel} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>
 			</div>
 		);
 	}

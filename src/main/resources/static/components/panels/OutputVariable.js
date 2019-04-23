@@ -10,6 +10,8 @@ function OutputVariable(props) {
 		color: "#ffffff",
 		borderTop: "1px solid #616161",
 		borderBottom: "1px solid #2e2e2e",
+		borderRight: "1px solid #2e2e2e",
+		borderLeft: "1px solid #2e2e2e",
 		marginTop: "1px",
 		marginBottom: "1px"
 	};

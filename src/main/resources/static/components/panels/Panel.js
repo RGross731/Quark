@@ -46,6 +46,8 @@ class Panel extends React.Component {
 			color: "#ffffff",
 			borderTop: `1px solid ${this.props.colors.light}`,
 			borderBottom: `1px solid ${this.props.colors.dark}`,
+			borderRight: `1px solid ${this.props.colors.dark}`,
+			borderLeft: `1px solid ${this.props.colors.dark}`,
 			marginBottom: "1px",
 			textShadow: `1px 1px ${this.props.colors.dark}`
 		};
@@ -56,6 +58,8 @@ class Panel extends React.Component {
 			height: "4px",
 			borderTop: `1px solid ${this.props.colors.light}`,
 			borderBottom: `1px solid ${this.props.colors.dark}`,
+			borderLeft: `1px solid ${this.props.colors.dark}`,
+			borderRight: `1px solid ${this.props.colors.dark}`,
 			marginTop: "1px"
 		};
 		
