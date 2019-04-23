@@ -7,10 +7,12 @@ class QuarkApp extends React.Component {
 				height: 0
 			},
 			requestPanel: {
+				id: 'requestPanel',
 				x: 100, 
 				y: 200
 			}, 
 			postMappingPanel: {
+				id: 'postMappingPanel',
 				x: 400, 
 				y: 200
 			},
