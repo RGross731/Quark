@@ -6,7 +6,7 @@ class Request extends React.Component {
 	
 	handleMouseDown = (e) => {
 		e.preventDefault();
-		this.setState({xOffset: e.pageX - this.props.x, yOffset: e.pageY - this.props.y, dragging: true, cursor: '-webkit-grabbing'});
+		this.setState({xOffset: e.pageX - this.props.details.x, yOffset: e.pageY - this.props.details.y, dragging: true, cursor: '-webkit-grabbing'});
 	}
 	
 	handleMouseMove = (e) => {
@@ -25,7 +25,7 @@ class Request extends React.Component {
 		};
 		
 		return (
-			<Panel x={this.props.x} y={this.props.y}>
+			<Panel x={this.props.details.x} y={this.props.details.y}>
 				<Header onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} icon={"far fa-file"} text={"Request"} cursor={this.state.cursor} colors={colors}/>
 				<OutputVariable color={"#00c851"} text={""} onAnchorMouseDown={this.props.onAnchorMouseDown} onAnchorMouseUp={this.props.onAnchorMouseUp}/>
 				<Footer colors={colors}/>

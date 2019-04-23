@@ -15,7 +15,7 @@ class QuarkApp extends React.Component {
 				y: 200
 			},
 			input: {
-				drag: null, 
+				drag: false, 
 				start: {
 					x: 0, 
 					y: 0
@@ -60,11 +60,11 @@ class QuarkApp extends React.Component {
 	}
 	
 	handleMouseUp = (e) => {
-		this.setState({input: {...this.state.input, drag: null}});
+		this.setState({input: {...this.state.input, drag: false}});
 	}
 	
 	handleAnchorMouseUp = (e) => {
-		this.setState({input: {...this.state.input, drag: null}, curve: {start: this.state.input.start, end: this.state.input.cursor}});
+		this.setState({input: {...this.state.input, drag: false}, curve: {start: {x: this.state.input.start.x - this.state.requestPanel.x, y: this.state.input.start.y - this.state.requestPanel.y }, end: {x: this.state.input.cursor.x - this.state.postMappingPanel.x, y: this.state.input.cursor.y - this.state.postMappingPanel.y }}});
 	}
 	
 	render() {
@@ -78,10 +78,10 @@ class QuarkApp extends React.Component {
 			<div onMouseMove={this.state.input.drag ? this.handleMouseMove : undefined} onMouseUp={this.state.input.drag ? this.handleMouseUp : undefined}>
 				<svg viewBox={`0 0 ${this.state.window.width} ${this.state.window.height}`}>
 					{this.state.input.drag && <Curve commands={commands}/>}
-					{this.state.curve && <Curve commands={`M ${this.state.curve.start.x} ${this.state.curve.start.y} C ${(this.state.curve.start.x + this.state.curve.end.x) / 2} ${this.state.curve.start.y} ${(this.state.curve.start.x + this.state.curve.end.x) / 2} ${this.state.curve.end.y} ${this.state.curve.end.x} ${this.state.curve.end.y}`}/>}
+					{this.state.curve && <Curve commands={`M ${this.state.curve.start.x + this.state.requestPanel.x} ${this.state.curve.start.y + this.state.requestPanel.y} C ${(this.state.curve.start.x  + this.state.requestPanel.x + this.state.curve.end.x  + this.state.postMappingPanel.x) / 2} ${this.state.curve.start.y + this.state.requestPanel.y} ${(this.state.curve.start.x  + this.state.requestPanel.x + this.state.curve.end.x  + this.state.postMappingPanel.x) / 2} ${this.state.curve.end.y + this.state.postMappingPanel.y} ${this.state.curve.end.x + this.state.postMappingPanel.x} ${this.state.curve.end.y + this.state.postMappingPanel.y}`}/>}
 				</svg>
-				<Request x={this.state.requestPanel.x} y={this.state.requestPanel.y} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>
-				<PostMapping x={this.state.postMappingPanel.x} y={this.state.postMappingPanel.y} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>
+				<Request details={this.state.requestPanel} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>
+				<PostMapping details={this.state.postMappingPanel} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>
 			</div>
 		);
 	}

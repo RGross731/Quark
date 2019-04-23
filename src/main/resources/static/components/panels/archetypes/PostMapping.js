@@ -6,7 +6,7 @@ class PostMapping extends React.Component {
 	
 	handleMouseDown = (e) => {
 		e.preventDefault();
-		this.setState({xOffset: e.pageX - this.props.x, yOffset: e.pageY - this.props.y, dragging: true, cursor: '-webkit-grabbing'});
+		this.setState({xOffset: e.pageX - this.props.details.x, yOffset: e.pageY - this.props.details.y, dragging: true, cursor: '-webkit-grabbing'});
 	}
 	
 	handleMouseMove = (e) => {
@@ -25,7 +25,7 @@ class PostMapping extends React.Component {
 		};
 		
 		return (
-			<Panel x={this.props.x} y={this.props.y}>
+			<Panel x={this.props.details.x} y={this.props.details.y}>
 				<Header onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} icon={"fas fa-network-wired"} text={"POST Mapping"} cursor={this.state.cursor} colors={colors}/>
 				<InputVariable color={"#33b5e5"} text={"Path"}/>
 				<InputVariable color={"#00c851"} text={"Request"} onAnchorMouseDown={this.props.onAnchorMouseDown} onAnchorMouseUp={this.props.onAnchorMouseUp}/>
