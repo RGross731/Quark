@@ -6,6 +6,8 @@ class Panel extends React.Component {
 	
 	handleMouseDown = (e) => {
 		e.preventDefault();
+		window.addEventListener('mousemove', this.handleMouseMove);
+		window.addEventListener('mouseup', this.handleMouseUp);
 		this.setState({xOffset: e.pageX - this.props.details.x, yOffset: e.pageY - this.props.details.y, dragging: true, cursor: '-webkit-grabbing'});
 	}
 	
@@ -14,6 +16,8 @@ class Panel extends React.Component {
 	}
 	
 	handleMouseUp = (e) => {
+		window.removeEventListener('mousemove', this.handleMouseMove);
+		window.removeEventListener('mouseup', this.handleMouseUp);
 		this.setState({dragging: false, cursor: '-webkit-grab'});
 	}
 	
@@ -57,7 +61,7 @@ class Panel extends React.Component {
 		
 		return (
 			<div style={panelStyle}>
-				<div onMouseDown={this.handleMouseDown} onMouseMove={this.state.dragging ? this.handleMouseMove : undefined} onMouseUp={this.state.dragging ? this.handleMouseUp : undefined} style={headerStyle}>
+				<div onMouseDown={this.handleMouseDown} style={headerStyle}>
 					<i className={this.props.icon} style={{paddingRight: 10}}></i>{this.props.text}
 				</div>
 				{this.props.children}
