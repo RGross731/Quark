@@ -3,7 +3,7 @@ function InputVariable(props) {
 		backgroundColor: "#424242",
 		height: "40px",
 		textAlign: "left",
-		//paddingLeft: "10px",
+		paddingLeft: "10px",
 		paddingRight: "10px",
 		lineHeight: "40px",
 		fontFamily: "Open Sans",
@@ -18,8 +18,8 @@ function InputVariable(props) {
 	
 	return (
 		<div style={style}>
-			{/*<i className="far fa-circle fa-sm" onMouseDown={props.onAnchorMouseDown} onMouseUp={props.onAnchorMouseUp} style={{paddingRight: 10, color: props.color}}></i>{props.text}*/}
-			<div style={{height: "38px", width: "20px", backgroundColor: props.color, borderTop: "1px solid #00e676", borderBottom: "1px solid #007e33", borderRight: "1px solid #007e33", borderLeft: "1px solid #007e33"}}/>
+			<i className="far fa-circle fa-sm" onMouseDown={props.onAnchorMouseDown} onMouseUp={props.onAnchorMouseUp} style={{paddingRight: 10, color: props.color}}></i>{props.text}
+			{/*<svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="6" stroke={props.color} strokeWidth="2" fill={props.color}/></svg>{props.text}*/}
 		</div>
 	);
 }
