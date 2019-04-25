@@ -52,9 +52,11 @@ class QuarkApp extends React.Component {
 		this.setState({[panel]: details});
 	}
 	
-	handleMouseDown = (e) => {
+	handleAnchorMouseDown = (e) => {
 		e.preventDefault();
-		this.setState({input: {...this.state.input, drag: true, start: {x: e.pageX, y: e.pageY}, cursor: {x: e.pageX, y: e.pageY}}});
+		this.setState({input: {...this.state.input, drag: true, start: {x: e.target.getBoundingClientRect().left + 6, y: e.target.getBoundingClientRect().top + 6}, cursor: {x: e.pageX, y: e.pageY}}});
+		
+		//this.setState({input: {...this.state.input, drag: true, start: {x: e.pageX, y: e.pageY}, cursor: {x: e.pageX, y: e.pageY}}});
 	}
 	
 	handleMouseMove = (e) => {
@@ -66,7 +68,7 @@ class QuarkApp extends React.Component {
 	}
 	
 	handleAnchorMouseUp = (e) => {
-		this.setState({input: {...this.state.input, drag: false}, curve: {start: {x: this.state.input.start.x - this.state.requestPanel.x, y: this.state.input.start.y - this.state.requestPanel.y }, end: {x: this.state.input.cursor.x - this.state.postMappingPanel.x, y: this.state.input.cursor.y - this.state.postMappingPanel.y }}});
+		this.setState({input: {...this.state.input, drag: false}, curve: {start: {x: this.state.input.start.x - this.state.requestPanel.x, y: this.state.input.start.y - this.state.requestPanel.y }, end: {x: e.target.getBoundingClientRect().left + 6 - this.state.postMappingPanel.x, y: e.target.getBoundingClientRect().top + 6 - this.state.postMappingPanel.y }}});
 	}
 	
 	render() {
@@ -78,8 +80,8 @@ class QuarkApp extends React.Component {
 		
 		return (
 			<div onMouseMove={this.state.input.drag ? this.handleMouseMove : undefined} onMouseUp={this.state.input.drag ? this.handleMouseUp : undefined}>
-				<Request details={this.state.requestPanel} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>
-				<PostMapping details={this.state.postMappingPanel} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>
+				<Request details={this.state.requestPanel} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleAnchorMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>
+				<PostMapping details={this.state.postMappingPanel} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleAnchorMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>
 				<svg viewBox={`0 0 ${this.state.window.width} ${this.state.window.height}`}>
 					{this.state.input.drag && <Curve commands={commands}/>}
 					{this.state.curve && <Curve commands={`M ${this.state.curve.start.x + this.state.requestPanel.x} ${this.state.curve.start.y + this.state.requestPanel.y} C ${(this.state.curve.start.x  + this.state.requestPanel.x + this.state.curve.end.x  + this.state.postMappingPanel.x) / 2} ${this.state.curve.start.y + this.state.requestPanel.y} ${(this.state.curve.start.x  + this.state.requestPanel.x + this.state.curve.end.x  + this.state.postMappingPanel.x) / 2} ${this.state.curve.end.y + this.state.postMappingPanel.y} ${this.state.curve.end.x + this.state.postMappingPanel.x} ${this.state.curve.end.y + this.state.postMappingPanel.y}`}/>}

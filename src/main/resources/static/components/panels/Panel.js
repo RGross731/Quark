@@ -42,7 +42,7 @@ class Panel extends React.Component {
 			paddingLeft: "10px",
 			paddingRight: "10px",
 			lineHeight: "30px",
-			fontFamily: "Open Sans",
+			fontFamily: "Quicksand",
 			color: "#ffffff",
 			borderTop: `1px solid ${this.props.colors.light}`,
 			borderBottom: `1px solid ${this.props.colors.dark}`,
