@@ -17,7 +17,8 @@ class QuarkApp extends React.Component {
 				y: 200
 			},
 			input: {
-				drag: false, 
+				drag: false,
+				mouseDownTarget: null,
 				start: {
 					x: 0, 
 					y: 0
@@ -54,7 +55,7 @@ class QuarkApp extends React.Component {
 	
 	handleAnchorMouseDown = (e) => {
 		e.preventDefault();
-		this.setState({input: {...this.state.input, drag: true, start: {x: e.target.getBoundingClientRect().left + 6, y: e.target.getBoundingClientRect().top + 6}, cursor: {x: e.pageX, y: e.pageY}}});
+		this.setState({input: {...this.state.input, drag: true, mouseDownTarget: e.target, start: {x: e.target.getBoundingClientRect().left + 6, y: e.target.getBoundingClientRect().top + 6}, cursor: {x: e.pageX, y: e.pageY}}});
 		
 		//this.setState({input: {...this.state.input, drag: true, start: {x: e.pageX, y: e.pageY}, cursor: {x: e.pageX, y: e.pageY}}});
 	}
@@ -68,7 +69,11 @@ class QuarkApp extends React.Component {
 	}
 	
 	handleAnchorMouseUp = (e) => {
-		this.setState({input: {...this.state.input, drag: false}, curve: {start: {x: this.state.input.start.x - this.state.requestPanel.x, y: this.state.input.start.y - this.state.requestPanel.y }, end: {x: e.target.getBoundingClientRect().left + 6 - this.state.postMappingPanel.x, y: e.target.getBoundingClientRect().top + 6 - this.state.postMappingPanel.y }}});
+		if (e.target == this.state.input.mouseDownTarget) {
+			this.setState({input: {...this.state.input, drag: false}});
+		} else {
+			this.setState({input: {...this.state.input, drag: false}, curve: {start: {x: this.state.input.start.x - this.state.requestPanel.x, y: this.state.input.start.y - this.state.requestPanel.y }, end: {x: e.target.getBoundingClientRect().left + 6 - this.state.postMappingPanel.x, y: e.target.getBoundingClientRect().top + 6 - this.state.postMappingPanel.y }}});
+		}
 	}
 	
 	render() {
