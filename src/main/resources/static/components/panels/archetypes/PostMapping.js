@@ -8,7 +8,7 @@ function PostMapping(props) {
 	return (				
 		<Panel icon={"fas fa-network-wired"} text={"POST Mapping"} updatePanel={props.updatePanel} details={props.details} colors={colors}>
 			<InputVariable color={"#33b5e5"} text={"Path"}/>
-			<InputVariable color={"#00c851"} text={"Request"} onAnchorMouseDown={props.onAnchorMouseDown} onAnchorMouseUp={props.onAnchorMouseUp}/>
+			<InputVariable color={"#00c851"} text={"Request"} panel={"postMappingPanel"} onAnchorMouseDown={props.onAnchorMouseDown} onAnchorMouseUp={props.onAnchorMouseUp}/>
 			<OutputVariable color={"#ff4444"}/>
 		</Panel>
 	);

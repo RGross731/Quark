@@ -16,10 +16,9 @@ function InputVariable(props) {
 	
 	return (
 		<div style={style}>
-			{/*<i className="far fa-circle fa-sm" onMouseDown={props.onAnchorMouseDown} onMouseUp={props.onAnchorMouseUp} style={{paddingRight: 10, color: props.color}}></i>{props.text}*/}
 			<div style={{height: "40px", width: "40px", float: "left"}}>
 				<svg width="40" height="40" viewBox="0 0 40 40">
-					<circle cx="20" cy="20" r="6" stroke={props.color} strokeWidth="2" fill={"#424242"} onMouseDown={props.onAnchorMouseDown} onMouseUp={props.onAnchorMouseUp}/>
+					<circle cx="20" cy="20" r="6" stroke={props.color} strokeWidth="2" fill={"#424242"} onMouseDown={(e) => props.onAnchorMouseDown(e, props.panel)} onMouseUp={(e) => props.onAnchorMouseUp(e, props.panel)}/>
 				</svg>
 			</div>
 			{props.text}

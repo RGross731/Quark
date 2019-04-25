@@ -18,7 +18,7 @@ class QuarkApp extends React.Component {
 			},
 			input: {
 				drag: false,
-				mouseDownTarget: null,
+				startPanel: null,
 				start: {
 					x: 0, 
 					y: 0
@@ -53,11 +53,9 @@ class QuarkApp extends React.Component {
 		this.setState({[panel]: details});
 	}
 	
-	handleAnchorMouseDown = (e) => {
+	handleAnchorMouseDown = (e, panel) => {
 		e.preventDefault();
-		this.setState({input: {...this.state.input, drag: true, mouseDownTarget: e.target, start: {x: e.target.getBoundingClientRect().left + 6, y: e.target.getBoundingClientRect().top + 6}, cursor: {x: e.pageX, y: e.pageY}}});
-		
-		//this.setState({input: {...this.state.input, drag: true, start: {x: e.pageX, y: e.pageY}, cursor: {x: e.pageX, y: e.pageY}}});
+		this.setState({input: {...this.state.input, drag: true, startPanel: panel, start: {x: e.target.getBoundingClientRect().left + 6, y: e.target.getBoundingClientRect().top + 6}, cursor: {x: e.pageX, y: e.pageY}}});
 	}
 	
 	handleMouseMove = (e) => {
@@ -68,11 +66,11 @@ class QuarkApp extends React.Component {
 		this.setState({input: {...this.state.input, drag: false}});
 	}
 	
-	handleAnchorMouseUp = (e) => {
-		if (e.target == this.state.input.mouseDownTarget) {
+	handleAnchorMouseUp = (e, panel) => {
+		if (panel == this.state.input.startPanel) {
 			this.setState({input: {...this.state.input, drag: false}});
 		} else {
-			this.setState({input: {...this.state.input, drag: false}, curve: {start: {x: this.state.input.start.x - this.state.requestPanel.x, y: this.state.input.start.y - this.state.requestPanel.y }, end: {x: e.target.getBoundingClientRect().left + 6 - this.state.postMappingPanel.x, y: e.target.getBoundingClientRect().top + 6 - this.state.postMappingPanel.y }}});
+			this.setState({input: {...this.state.input, drag: false}, curve: {start: {panel: this.state.input.startPanel, x: this.state.input.start.x - this.state[this.state.input.startPanel].x, y: this.state.input.start.y - this.state[this.state.input.startPanel].y }, end: {panel: panel, x: e.target.getBoundingClientRect().left + 6 - this.state[panel].x, y: e.target.getBoundingClientRect().top + 6 - this.state[panel].y}}});
 		}
 	}
 	
@@ -89,7 +87,7 @@ class QuarkApp extends React.Component {
 				<PostMapping details={this.state.postMappingPanel} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleAnchorMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>
 				<svg viewBox={`0 0 ${this.state.window.width} ${this.state.window.height}`}>
 					{this.state.input.drag && <Curve commands={commands}/>}
-					{this.state.curve && <Curve commands={`M ${this.state.curve.start.x + this.state.requestPanel.x} ${this.state.curve.start.y + this.state.requestPanel.y} C ${(this.state.curve.start.x  + this.state.requestPanel.x + this.state.curve.end.x  + this.state.postMappingPanel.x) / 2} ${this.state.curve.start.y + this.state.requestPanel.y} ${(this.state.curve.start.x  + this.state.requestPanel.x + this.state.curve.end.x  + this.state.postMappingPanel.x) / 2} ${this.state.curve.end.y + this.state.postMappingPanel.y} ${this.state.curve.end.x + this.state.postMappingPanel.x} ${this.state.curve.end.y + this.state.postMappingPanel.y}`}/>}
+					{this.state.curve && <Curve commands={`M ${this.state.curve.start.x + this.state[this.state.curve.start.panel].x} ${this.state.curve.start.y + this.state[this.state.curve.start.panel].y} C ${(this.state.curve.start.x  + this.state[this.state.curve.start.panel].x + this.state.curve.end.x  + this.state[this.state.curve.end.panel].x) / 2} ${this.state.curve.start.y + this.state[this.state.curve.start.panel].y} ${(this.state.curve.start.x  + this.state[this.state.curve.start.panel].x + this.state.curve.end.x  + this.state[this.state.curve.end.panel].x) / 2} ${this.state.curve.end.y + this.state[this.state.curve.end.panel].y} ${this.state.curve.end.x + this.state[this.state.curve.end.panel].x} ${this.state.curve.end.y + this.state[this.state.curve.end.panel].y}`}/>}
 				</svg>
 			</div>
 		);
