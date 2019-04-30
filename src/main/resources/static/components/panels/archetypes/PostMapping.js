@@ -6,10 +6,10 @@ function PostMapping(props) {
 	};
 	
 	return (				
-		<Panel icon={"fas fa-network-wired"} text={"POST Mapping"} updatePanel={props.updatePanel} details={props.details} colors={colors}>
-			<InputVariable color={"#33b5e5"} text={"Path"}/>
+		<Panel icon={"fas fa-network-wired"} text={"POST Mapping"} updatePanel={props.updatePanel} id={props.id} details={props.details} colors={colors}>
+			<InputVariable color={"#33b5e5"} text={"Path"} panel={"postMappingPanel"} onAnchorMouseDown={props.onAnchorMouseDown} onAnchorMouseUp={props.onAnchorMouseUp}/>
 			<InputVariable color={"#00c851"} text={"Request"} panel={"postMappingPanel"} onAnchorMouseDown={props.onAnchorMouseDown} onAnchorMouseUp={props.onAnchorMouseUp}/>
-			<OutputVariable color={"#ff4444"}/>
+			<OutputVariable color={"#ff4444"} panel={"postMappingPanel"} onAnchorMouseDown={props.onAnchorMouseDown} onAnchorMouseUp={props.onAnchorMouseUp}/>
 		</Panel>
 	);
 }

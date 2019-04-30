@@ -12,7 +12,7 @@ class Panel extends React.Component {
 	}
 	
 	handleMouseMove = (e) => {
-		this.props.updatePanel(this.props.details.id, {id: this.props.details.id, x: e.pageX - this.state.xOffset, y: e.pageY - this.state.yOffset});
+		this.props.updatePanel(this.props.id, {x: e.pageX - this.state.xOffset, y: e.pageY - this.state.yOffset});
 	}
 	
 	handleMouseUp = (e) => {
