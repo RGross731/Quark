@@ -6,10 +6,10 @@ function PostMapping(props) {
 	};
 	
 	return (				
-		<Panel icon={"fas fa-network-wired"} text={"POST Mapping"} updatePanel={props.updatePanel} id={props.id} details={props.details} colors={colors}>
-			<InputVariable color={"#33b5e5"} text={"Path"} panel={"postMappingPanel"} onAnchorMouseDown={props.onAnchorMouseDown} onAnchorMouseUp={props.onAnchorMouseUp}/>
-			<InputVariable color={"#00c851"} text={"Request"} panel={"postMappingPanel"} onAnchorMouseDown={props.onAnchorMouseDown} onAnchorMouseUp={props.onAnchorMouseUp}/>
-			<OutputVariable color={"#ff4444"} panel={"postMappingPanel"} onAnchorMouseDown={props.onAnchorMouseDown} onAnchorMouseUp={props.onAnchorMouseUp}/>
+		<Panel id={props.id} panel={props.panel} updatePanel={props.updatePanel} icon={"fas fa-network-wired"} text={"POST Mapping"} colors={colors}>
+			<InputVariable id={props.id} panel={props.panel} onAnchorMouseDown={props.onAnchorMouseDown} onAnchorMouseUp={props.onAnchorMouseUp} text={"Path"} color={"#33b5e5"}/>
+			<InputVariable id={props.id} panel={props.panel} onAnchorMouseDown={props.onAnchorMouseDown} onAnchorMouseUp={props.onAnchorMouseUp} text={"Request"} color={"#00c851"}/>
+			<OutputVariable id={props.id} panel={props.panel} onAnchorMouseDown={props.onAnchorMouseDown} onAnchorMouseUp={props.onAnchorMouseUp} text={""} color={"#ff4444"}/>
 		</Panel>
 	);
 }

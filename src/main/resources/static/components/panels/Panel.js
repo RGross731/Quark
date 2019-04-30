@@ -8,11 +8,11 @@ class Panel extends React.Component {
 		e.preventDefault();
 		window.addEventListener('mousemove', this.handleMouseMove);
 		window.addEventListener('mouseup', this.handleMouseUp);
-		this.setState({xOffset: e.pageX - this.props.details.x, yOffset: e.pageY - this.props.details.y, dragging: true, cursor: '-webkit-grabbing'});
+		this.setState({xOffset: e.pageX - this.props.panel.x, yOffset: e.pageY - this.props.panel.y, dragging: true, cursor: '-webkit-grabbing'});
 	}
 	
 	handleMouseMove = (e) => {
-		this.props.updatePanel(this.props.id, {x: e.pageX - this.state.xOffset, y: e.pageY - this.state.yOffset});
+		this.props.updatePanel(this.props.id, {archetype: this.props.panel.archetype, x: e.pageX - this.state.xOffset, y: e.pageY - this.state.yOffset});
 	}
 	
 	handleMouseUp = (e) => {
@@ -28,8 +28,8 @@ class Panel extends React.Component {
 			backgroundColor: "#212121",
 			boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2)",
 			width: "200px",
-			left: this.props.details.x,
-			top: this.props.details.y
+			left: this.props.panel.x,
+			top: this.props.panel.y
 		};
 		
 		const headerStyle = {

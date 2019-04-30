@@ -6,8 +6,8 @@ function Request(props) {
 	};
 	
 	return (
-		<Panel icon={"far fa-file"} text={"Request"} updatePanel={props.updatePanel} id={props.id} details={props.details} colors={colors}>
-			<OutputVariable color={"#00c851"} text={""} panel={"requestPanel"} onAnchorMouseDown={props.onAnchorMouseDown} onAnchorMouseUp={props.onAnchorMouseUp}/>
+		<Panel id={props.id} panel={props.panel} updatePanel={props.updatePanel} icon={"far fa-file"} text={"Request"} colors={colors}>
+			<OutputVariable id={props.id} panel={props.panel} onAnchorMouseDown={props.onAnchorMouseDown} onAnchorMouseUp={props.onAnchorMouseUp} text={""} color={"#00c851"}/>
 		</Panel>
 	);
 }

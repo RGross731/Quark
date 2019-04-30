@@ -15,6 +15,7 @@ function InputVariable(props) {
 	};
 	
 	const anchor = {
+		id: props.id,
 		panel: props.panel, 
 		type: "input", 
 		color: props.color
