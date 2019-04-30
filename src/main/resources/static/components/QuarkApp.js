@@ -52,9 +52,9 @@ class QuarkApp extends React.Component {
 		this.setState({panels: {...this.state.panels, [panel]: details}});
 	}
 	
-	handleAnchorMouseDown = (e, panel) => {
+	handleAnchorMouseDown = (e, anchor) => {
 		e.preventDefault();
-		this.setState({input: {...this.state.input, drag: true, startPanel: panel, start: {x: e.target.getBoundingClientRect().left + 6, y: e.target.getBoundingClientRect().top + 6}, cursor: {x: e.pageX, y: e.pageY}}});
+		this.setState({input: {...this.state.input, drag: true, startPanel: anchor.panel, start: {x: e.target.getBoundingClientRect().left + 6, y: e.target.getBoundingClientRect().top + 6}, cursor: {x: e.pageX, y: e.pageY}}});
 	}
 	
 	handleMouseMove = (e) => {
@@ -65,11 +65,11 @@ class QuarkApp extends React.Component {
 		this.setState({input: {...this.state.input, drag: false}});
 	}
 	
-	handleAnchorMouseUp = (e, panel) => {
-		if (panel == this.state.input.startPanel) {
+	handleAnchorMouseUp = (e, anchor) => {
+		if (anchor.panel == this.state.input.startPanel) {
 			this.setState({input: {...this.state.input, drag: false}});
 		} else {
-			this.setState({input: {...this.state.input, drag: false}, curve: {start: {panel: this.state.input.startPanel, x: this.state.input.start.x - this.state.panels[this.state.input.startPanel].x, y: this.state.input.start.y - this.state.panels[this.state.input.startPanel].y }, end: {panel: panel, x: e.target.getBoundingClientRect().left + 6 - this.state.panels[panel].x, y: e.target.getBoundingClientRect().top + 6 - this.state.panels[panel].y}}});
+			this.setState({input: {...this.state.input, drag: false}, curve: {start: {panel: this.state.input.startPanel, x: this.state.input.start.x - this.state.panels[this.state.input.startPanel].x, y: this.state.input.start.y - this.state.panels[this.state.input.startPanel].y }, end: {panel: anchor.panel, x: e.target.getBoundingClientRect().left + 6 - this.state.panels[anchor.panel].x, y: e.target.getBoundingClientRect().top + 6 - this.state.panels[anchor.panel].y}}});
 		}
 	}
 	

@@ -14,11 +14,17 @@ function InputVariable(props) {
 		marginBottom: "1px"
 	};
 	
+	const anchor = {
+		panel: props.panel, 
+		type: "input", 
+		color: props.color
+	};	
+	
 	return (
 		<div style={style}>
 			<div style={{height: "40px", width: "40px", float: "left"}}>
 				<svg width="40" height="40" viewBox="0 0 40 40">
-					<circle cx="20" cy="20" r="6" stroke={props.color} strokeWidth="2" fill={"#424242"} onMouseDown={(e) => props.onAnchorMouseDown(e, props.panel)} onMouseUp={(e) => props.onAnchorMouseUp(e, props.panel)}/>
+					<circle cx="20" cy="20" r="6" stroke={props.color} strokeWidth="2" fill={props.connected ? props.color : "#424242"} onMouseDown={(e) => props.onAnchorMouseDown(e, anchor)} onMouseUp={(e) => props.onAnchorMouseUp(e, anchor)}/>
 				</svg>
 			</div>
 			{props.text}
