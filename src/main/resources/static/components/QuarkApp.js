@@ -6,16 +6,6 @@ class QuarkApp extends React.Component {
 				width: 0, 
 				height: 0
 			},
-			panels: {
-				requestPanel: {
-					x: 100, 
-					y: 200
-				}, 
-				postMappingPanel: {
-					x: 400, 
-					y: 200
-				}
-			},
 			input: {
 				drag: false,
 				startPanel: null,
@@ -30,6 +20,16 @@ class QuarkApp extends React.Component {
 				offset: {
 					x: 0, 
 					y: 0
+				}
+			},
+			panels: {
+				requestPanel: {
+					x: 100, 
+					y: 200
+				}, 
+				postMappingPanel: {
+					x: 400, 
+					y: 200
 				}
 			}
 		};
