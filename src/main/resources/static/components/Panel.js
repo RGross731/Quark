@@ -1,24 +1,24 @@
 class Panel extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {xOffset: 0, yOffset: 0, dragging: false, cursor: '-webkit-grab'};
+		this.state = {offsetX: 0, offsetY: 0, cursor: '-webkit-grab'};
 	}
 	
-	handleMouseDown = (e) => {
+	handleHeaderMouseDown = (e) => {
 		e.preventDefault();
-		window.addEventListener('mousemove', this.handleMouseMove);
-		window.addEventListener('mouseup', this.handleMouseUp);
-		this.setState({xOffset: e.pageX - this.props.panel.x, yOffset: e.pageY - this.props.panel.y, dragging: true, cursor: '-webkit-grabbing'});
+		window.addEventListener('mousemove', this.handleWindowMouseMove);
+		window.addEventListener('mouseup', this.handleWindowMouseUp);
+		this.setState({offsetX: e.pageX - this.props.panel.x, offsetY: e.pageY - this.props.panel.y, cursor: '-webkit-grabbing'});
 	}
 	
-	handleMouseMove = (e) => {
-		this.props.updatePanel(this.props.id, {archetype: this.props.panel.archetype, x: e.pageX - this.state.xOffset, y: e.pageY - this.state.yOffset});
+	handleWindowMouseMove = (e) => {
+		this.props.updatePanel(this.props.id, {x: e.pageX - this.state.offsetX, y: e.pageY - this.state.offsetY}, true);
 	}
 	
-	handleMouseUp = (e) => {
-		window.removeEventListener('mousemove', this.handleMouseMove);
-		window.removeEventListener('mouseup', this.handleMouseUp);
-		this.setState({dragging: false, cursor: '-webkit-grab'});
+	handleWindowMouseUp = (e) => {
+		window.removeEventListener('mousemove', this.handleWindowMouseMove);
+		window.removeEventListener('mouseup', this.handleWindowMouseUp);
+		this.setState({cursor: '-webkit-grab'});
 	}
 	
 	render() {	
@@ -35,7 +35,7 @@ class Panel extends React.Component {
 		const headerStyle = {
 			cursor: this.state.cursor,
 			borderRadius: "4px 4px 0px 0px",
-			//background: `linear-gradient(to right, ${props.color}, #cc0000)`,
+			//background: `linear-gradient(to right, ${this.props.color}, #cc0000)`,
 			backgroundColor: this.props.colors.normal,
 			height: "30px",
 			textAlign: "left",
@@ -65,7 +65,7 @@ class Panel extends React.Component {
 		
 		return (
 			<div style={panelStyle}>
-				<div onMouseDown={this.handleMouseDown} style={headerStyle}>
+				<div onMouseDown={this.handleHeaderMouseDown} style={headerStyle}>
 					<i className={this.props.icon} style={{paddingRight: 10}}></i>{this.props.text}
 				</div>
 				{this.props.children}

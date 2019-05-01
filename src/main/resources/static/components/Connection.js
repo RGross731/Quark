@@ -1,13 +1,19 @@
 function Connection(props) {		
-	const startControlPoint = {x: (props.start.x + props.end.x) / 2, y: props.start.y};
-	const endControlPoint = {x: (props.start.x + props.end.x) / 2, y: props.end.y};	
-	const commands = `M ${props.start.x} ${props.start.y} C ${startControlPoint.x} ${startControlPoint.y} ${endControlPoint.x} ${endControlPoint.y} ${props.end.x} ${props.end.y}`;
+	if (!props.start || !props.end) {
+		return null;
+	}
 	
+	const start = props.start;
+	const end = props.end;
+	const startCP = {x: (start.x + end.x) / 2, y: start.y};
+	const endCP = {x: (start.x + end.x) / 2, y: end.y};	
+	const commands = `M ${start.x} ${start.y} C ${startCP.x} ${startCP.y} ${endCP.x} ${endCP.y} ${end.x} ${end.y}`;
+
 	return (
 		<path 
 			d={commands} 
 			fill="none" 
-			stroke={props.color || "#e9ecef"}
+			stroke="#e9ecef"
 			strokeWidth={4}
 		/>
 	);

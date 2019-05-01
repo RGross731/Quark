@@ -14,63 +14,43 @@ class QuarkApp extends React.Component {
 					y: 200
 				}
 			},
-			input: {
-				drag: false,
-				startPanel: null,
-				start: {
-					x: 0, 
-					y: 0
-				}, 
-				cursor: {
-					x: 0, 
-					y: 0
-				}, 
-				offset: {
-					x: 0, 
-					y: 0
-				}
+			connections: {
+				
 			}
 		};
 	}
 	
-	updatePanel = (id, panel) => {
-		this.setState({panels: {...this.state.panels, [id]: panel}});
-	}
-	
-	handleAnchorMouseDown = (e, anchor) => {
-		e.preventDefault();
-		this.setState({input: {...this.state.input, drag: true, startPanel: anchor.id, start: {x: e.target.getBoundingClientRect().left + 6, y: e.target.getBoundingClientRect().top + 6}, cursor: {x: e.pageX, y: e.pageY}}});
-	}
-	
-	handleMouseMove = (e) => {
-		this.setState({input: {...this.state.input, cursor: {x: e.pageX, y: e.pageY}}});
-	}
-	
-	handleMouseUp = (e) => {
-		this.setState({input: {...this.state.input, drag: false}});
-	}
-	
-	handleAnchorMouseUp = (e, anchor) => {
-		if (anchor.id == this.state.input.startPanel) {
-			this.setState({input: {...this.state.input, drag: false}});
-		} else {
-			this.setState({input: {...this.state.input, drag: false}, curve: {start: {panel: this.state.input.startPanel, x: this.state.input.start.x - this.state.panels[this.state.input.startPanel].x, y: this.state.input.start.y - this.state.panels[this.state.input.startPanel].y }, end: {panel: anchor.id, x: e.target.getBoundingClientRect().left + 6 - this.state.panels[anchor.id].x, y: e.target.getBoundingClientRect().top + 6 - this.state.panels[anchor.id].y}}});
+	updatePanel = (id, panel, additive) => {
+		if (additive) {
+			panel = {...this.state.panels[id], ...panel};
 		}
+		this.setState({panels: {...this.state.panels, [id]: panel}});
+		return panel;
 	}
 	
-	render() {
-		//console.log(Date.now().toString(36));
-		
+	updateConnection = (id, connection, additive) => {
+		if (additive) {
+			connection = {...this.state.connections[id], ...connection};
+		}
+		this.setState({connections: {...this.state.connections, [id]: connection}});
+		return connection;
+	}
+	
+	render() {		
 		return (
-			<div onMouseMove={this.state.input.drag ? this.handleMouseMove : undefined} onMouseUp={this.state.input.drag ? this.handleMouseUp : undefined}>
+			<div>
 				{Object.keys(this.state.panels).map(key => {
 					const panel = this.state.panels[key];
 					const Archetype = panel.archetype;
-					return <Archetype key={key} id={key} panel={panel} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleAnchorMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>;
+					return <Archetype key={key} id={key} panel={panel} updatePanel={this.updatePanel} updateConnection={this.updateConnection}/>;
 				})}
 				<ConnectionRenderer>
-					{this.state.input.drag && <Connection start={this.state.input.start} end={this.state.input.cursor}/>}
-					{this.state.curve && <Connection start={{x: this.state.curve.start.x + this.state.panels[this.state.curve.start.panel].x, y: this.state.curve.start.y + this.state.panels[this.state.curve.start.panel].y}} end={{x: this.state.curve.end.x + this.state.panels[this.state.curve.end.panel].x, y: this.state.curve.end.y + this.state.panels[this.state.curve.end.panel].y}}/>}
+					{Object.keys(this.state.connections).map(key => {
+						const connection = this.state.connections[key];
+						if (connection != undefined) {
+							return <Connection key={key} start={{x: this.state.panels[connection.start.panel].x + connection.start.x, y: this.state.panels[connection.start.panel].y + connection.start.y}} end={{x: (connection.end.panel ? this.state.panels[connection.end.panel].x : 0) + connection.end.x, y: (connection.end.panel ? this.state.panels[connection.end.panel].y : 0) + connection.end.y}}/>;
+						}
+					})}
 				</ConnectionRenderer>
 			</div>
 		);
