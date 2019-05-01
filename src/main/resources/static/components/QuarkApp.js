@@ -2,9 +2,17 @@ class QuarkApp extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			window: {
-				width: 0, 
-				height: 0
+			panels: {
+				jv3f4ksn: {
+					archetype: Request,
+					x: 100, 
+					y: 200
+				}, 
+				jv3f4kt0: {
+					archetype: PostMapping,
+					x: 400, 
+					y: 200
+				}
 			},
 			input: {
 				drag: false,
@@ -21,33 +29,8 @@ class QuarkApp extends React.Component {
 					x: 0, 
 					y: 0
 				}
-			},
-			panels: {
-				jv3f4ksn: {
-					archetype: Request,
-					x: 100, 
-					y: 200
-				}, 
-				jv3f4kt0: {
-					archetype: PostMapping,
-					x: 400, 
-					y: 200
-				}
 			}
 		};
-	}
-	
-	componentDidMount = () => {
-		this.updateWindowDimensions();
-		window.addEventListener('resize', this.updateWindowDimensions);
-	}
-
-	componentWillUnmount= () => {
-		window.removeEventListener('resize', this.updateWindowDimensions);
-	}
-
-	updateWindowDimensions = () => {
-		this.setState({window: {width: window.innerWidth, height: window.innerHeight}});
 	}
 	
 	updatePanel = (id, panel) => {
@@ -85,10 +68,10 @@ class QuarkApp extends React.Component {
 					const Archetype = panel.archetype;
 					return <Archetype key={key} id={key} panel={panel} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleAnchorMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>;
 				})}
-				<svg viewBox={`0 0 ${this.state.window.width} ${this.state.window.height}`}>
+				<ConnectionRenderer>
 					{this.state.input.drag && <Connection start={this.state.input.start} end={this.state.input.cursor}/>}
 					{this.state.curve && <Connection start={{x: this.state.curve.start.x + this.state.panels[this.state.curve.start.panel].x, y: this.state.curve.start.y + this.state.panels[this.state.curve.start.panel].y}} end={{x: this.state.curve.end.x + this.state.panels[this.state.curve.end.panel].x, y: this.state.curve.end.y + this.state.panels[this.state.curve.end.panel].y}}/>}
-				</svg>
+				</ConnectionRenderer>
 			</div>
 		);
 	}
