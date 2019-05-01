@@ -11,7 +11,8 @@ function InputVariable(props) {
 		borderRight: "1px solid #2e2e2e",
 		borderLeft: "1px solid #2e2e2e",
 		marginTop: "1px",
-		marginBottom: "1px"
+		marginBottom: "1px",
+		textShadow: "1px 1px #212121"
 	};
 	
 	const anchor = {
