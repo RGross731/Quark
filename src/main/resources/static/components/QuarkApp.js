@@ -76,12 +76,6 @@ class QuarkApp extends React.Component {
 	}
 	
 	render() {
-		const startP = this.state.input.start;
-		const startCP = {x: (this.state.input.start.x + this.state.input.cursor.x) / 2, y: this.state.input.start.y};
-		const endCP = {x: (this.state.input.start.x + this.state.input.cursor.x) / 2, y: this.state.input.cursor.y};
-		const endP = this.state.input.cursor;
-		const commands = `M ${startP.x} ${startP.y} C ${startCP.x} ${startCP.y} ${endCP.x} ${endCP.y} ${endP.x} ${endP.y}`;
-		
 		//console.log(Date.now().toString(36));
 		
 		return (
@@ -92,8 +86,8 @@ class QuarkApp extends React.Component {
 					return <Archetype key={key} id={key} panel={panel} updatePanel={this.updatePanel} onAnchorMouseDown={this.handleAnchorMouseDown} onAnchorMouseUp={this.handleAnchorMouseUp}/>;
 				})}
 				<svg viewBox={`0 0 ${this.state.window.width} ${this.state.window.height}`}>
-					{this.state.input.drag && <Curve commands={commands}/>}
-					{this.state.curve && <Curve commands={`M ${this.state.curve.start.x + this.state.panels[this.state.curve.start.panel].x} ${this.state.curve.start.y + this.state.panels[this.state.curve.start.panel].y} C ${(this.state.curve.start.x  + this.state.panels[this.state.curve.start.panel].x + this.state.curve.end.x  + this.state.panels[this.state.curve.end.panel].x) / 2} ${this.state.curve.start.y + this.state.panels[this.state.curve.start.panel].y} ${(this.state.curve.start.x  + this.state.panels[this.state.curve.start.panel].x + this.state.curve.end.x  + this.state.panels[this.state.curve.end.panel].x) / 2} ${this.state.curve.end.y + this.state.panels[this.state.curve.end.panel].y} ${this.state.curve.end.x + this.state.panels[this.state.curve.end.panel].x} ${this.state.curve.end.y + this.state.panels[this.state.curve.end.panel].y}`}/>}
+					{this.state.input.drag && <Connection start={this.state.input.start} end={this.state.input.cursor}/>}
+					{this.state.curve && <Connection start={{x: this.state.curve.start.x + this.state.panels[this.state.curve.start.panel].x, y: this.state.curve.start.y + this.state.panels[this.state.curve.start.panel].y}} end={{x: this.state.curve.end.x + this.state.panels[this.state.curve.end.panel].x, y: this.state.curve.end.y + this.state.panels[this.state.curve.end.panel].y}}/>}
 				</svg>
 			</div>
 		);
