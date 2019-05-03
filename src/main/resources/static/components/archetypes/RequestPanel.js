@@ -1,4 +1,4 @@
-function Request(props) {	
+function RequestPanel(props) {	
 	const colors = {
 		normal: "#00c851",
 		light: "#00e676",

@@ -1,4 +1,4 @@
-function PostMapping(props) {
+function PostMappingPanel(props) {
 	const colors = {
 		normal: "#ff4444",
 		light: "#ff5252",

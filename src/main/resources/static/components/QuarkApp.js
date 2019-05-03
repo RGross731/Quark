@@ -3,19 +3,35 @@ class QuarkApp extends React.Component {
 		super(props);
 		this.state = {
 			panels: {
-				jv3f4ksn: {
-					archetype: Request,
+				jv3f4kr9: {
+					archetype: StringPanel,
 					x: 100, 
 					y: 200
+				},
+				jv3f4ksn: {
+					archetype: RequestPanel,
+					x: 100, 
+					y: 400
 				}, 
 				jv3f4kt0: {
-					archetype: PostMapping,
+					archetype: PostMappingPanel,
 					x: 400, 
 					y: 200
 				}
 			},
 			connections: {
-				
+				jv68wu9h: {
+					end: {
+						panel: "jv3f4kt0",
+						x: 21,
+						y: 97
+					},
+					start: {
+						panel: "jv3f4ksn",
+						x: 179,
+						y: 54
+					}
+				}
 			}
 		};
 	}
