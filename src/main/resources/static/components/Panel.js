@@ -1,14 +1,14 @@
 class Panel extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {offsetX: 0, offsetY: 0, cursor: '-webkit-grab'};
+		this.state = {offsetX: 0, offsetY: 0, cursor: "-webkit-grab"};
 	}
 	
 	handleHeaderMouseDown = (e) => {
 		e.preventDefault();
-		window.addEventListener('mousemove', this.handleWindowMouseMove);
-		window.addEventListener('mouseup', this.handleWindowMouseUp);
-		this.setState({offsetX: e.pageX - this.props.panel.x, offsetY: e.pageY - this.props.panel.y, cursor: '-webkit-grabbing'});
+		window.addEventListener("mousemove", this.handleWindowMouseMove);
+		window.addEventListener("mouseup", this.handleWindowMouseUp);
+		this.setState({offsetX: e.pageX - this.props.panel.x, offsetY: e.pageY - this.props.panel.y, cursor: "-webkit-grabbing"});
 	}
 	
 	handleWindowMouseMove = (e) => {
@@ -16,9 +16,9 @@ class Panel extends React.Component {
 	}
 	
 	handleWindowMouseUp = (e) => {
-		window.removeEventListener('mousemove', this.handleWindowMouseMove);
-		window.removeEventListener('mouseup', this.handleWindowMouseUp);
-		this.setState({cursor: '-webkit-grab'});
+		window.removeEventListener("mousemove", this.handleWindowMouseMove);
+		window.removeEventListener("mouseup", this.handleWindowMouseUp);
+		this.setState({cursor: "-webkit-grab"});
 	}
 	
 	render() {	

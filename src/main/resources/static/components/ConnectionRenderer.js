@@ -9,11 +9,11 @@ class ConnectionRenderer extends React.Component {
 	
 	componentDidMount = () => {
 		this.updateWindowDimensions();
-		window.addEventListener('resize', this.updateWindowDimensions);
+		window.addEventListener("resize", this.updateWindowDimensions);
 	}
 
 	componentWillUnmount= () => {
-		window.removeEventListener('resize', this.updateWindowDimensions);
+		window.removeEventListener("resize", this.updateWindowDimensions);
 	}
 
 	updateWindowDimensions = () => {
