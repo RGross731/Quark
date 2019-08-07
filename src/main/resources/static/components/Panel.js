@@ -12,7 +12,7 @@ class Panel extends React.Component {
 	}
 	
 	handleWindowMouseMove = (e) => {
-		this.props.updatePanel(this.props.id, {x: e.pageX - this.state.offsetX, y: e.pageY - this.state.offsetY}, true);
+		this.props.updatePanel(this.props.id, {archetype: this.props.panel.archetype, x: e.pageX - this.state.offsetX, y: e.pageY - this.state.offsetY});
 	}
 	
 	handleWindowMouseUp = (e) => {
@@ -35,7 +35,6 @@ class Panel extends React.Component {
 		const headerStyle = {
 			cursor: this.state.cursor,
 			borderRadius: "4px 4px 0px 0px",
-			//background: `linear-gradient(to right, ${this.props.color}, #cc0000)`,
 			backgroundColor: this.props.colors.normal,
 			height: "30px",
 			textAlign: "left",

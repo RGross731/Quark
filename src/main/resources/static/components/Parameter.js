@@ -1,4 +1,4 @@
-class InputVariable extends React.Component {
+class Parameter extends React.Component {
 	constructor(props) {
 		super(props);
 	}
@@ -7,22 +7,21 @@ class InputVariable extends React.Component {
 		e.preventDefault();
 		window.addEventListener("mousemove", this.handleWindowMouseMove);
 		window.addEventListener("mouseup", this.handleWindowMouseUp);
-		this.props.updateConnection("current", {start: {panel: this.props.id, x: e.target.getBoundingClientRect().left + 6 - this.props.panel.x, y: e.target.getBoundingClientRect().top + 6 - this.props.panel.y}, end: {panel: undefined, x: e.pageX, y: e.pageY}}, false);
-	}
-	
-	handleWindowMouseMove = (e) => {
-		this.props.updateConnection("current", {end: {panel: undefined, x: e.pageX, y: e.pageY}}, true);
+		//Create temporary connection
 	}
 	
 	handleAnchorMouseUp = (e) => {
-		const connection = this.props.updateConnection("current", {end: {panel: this.props.id, x: e.target.getBoundingClientRect().left + 6 - this.props.panel.x, y: e.target.getBoundingClientRect().top + 6 - this.props.panel.y}}, true);
-		this.props.updateConnection(Date.now().toString(36), connection, false);
+		//Validate connection and lock it in
+	}
+	
+	handleWindowMouseMove = (e) => {
+		//Update temporary connection
 	}
 	
 	handleWindowMouseUp = (e) => {
 		window.removeEventListener("mousemove", this.handleWindowMouseMove);
 		window.removeEventListener("mouseup", this.handleWindowMouseUp);
-		this.props.updateConnection("current", undefined, false);
+		//Delete temporary connection
 	}
 	
 	render() {
@@ -44,12 +43,12 @@ class InputVariable extends React.Component {
 		
 		return (
 			<div style={style}>
+				{this.props.text}
 				<div style={{height: "40px", width: "40px", float: "left"}}>
 					<svg width="40" height="40" viewBox="0 0 40 40">
 						<circle cx="20" cy="20" r="6" stroke={this.props.color} strokeWidth="2" fill={"#424242"} onMouseDown={this.handleAnchorMouseDown} onMouseUp={this.handleAnchorMouseUp}/>
 					</svg>
 				</div>
-				{this.props.text}
 			</div>
 		);
 	}

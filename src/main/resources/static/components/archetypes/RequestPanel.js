@@ -6,8 +6,8 @@ function RequestPanel(props) {
 	};
 	
 	return (
-		<Panel id={props.id} panel={props.panel} updatePanel={props.updatePanel} icon={"far fa-file"} text={"Request"} colors={colors}>
-			<OutputVariable id={props.id} panel={props.panel} text={""} color={"#00c851"} updateConnection={props.updateConnection}/>
+		<Panel id={props.id} panel={props.panel} updatePanel={props.updatePanel} text={"Request"} icon={"far fa-file"} colors={colors}>
+			<Value id={props.id} panel={props.panel} updateConnection={props.updateConnection} color={colors.normal}/>
 		</Panel>
 	);
 }

@@ -2,12 +2,13 @@ function StringPanel(props) {
 	const colors = {
 		normal: "#33b5e5",
 		light: "#4fc3f7",
-		dark: "#0099CC"
+		dark: "#0099cc"
 	};
 	
 	return (
-		<Panel id={props.id} panel={props.panel} updatePanel={props.updatePanel} icon={"fas fa-font"} text={"String"} colors={colors}>
-			<OutputVariable id={props.id} panel={props.panel} text={""} color={"#33b5e5"} updateConnection={props.updateConnection}/>
+		<Panel id={props.id} panel={props.panel} updatePanel={props.updatePanel} text={"String"} icon={"fas fa-font"} colors={colors}>
+			<Parameter id={props.id} panel={props.panel} updateConnection={props.updateConnection} text={"Text"} color={"#33b5e5"}/>	
+			<Value id={props.id} panel={props.panel} updateConnection={props.updateConnection} color={colors.normal}/>
 		</Panel>
 	);
 }
