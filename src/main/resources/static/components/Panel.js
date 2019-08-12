@@ -12,7 +12,7 @@ class Panel extends React.Component {
 	}
 	
 	handleWindowMouseMove = (e) => {
-		this.props.updatePanel(this.props.id, {archetype: this.props.panel.archetype, x: e.pageX - this.state.offsetX, y: e.pageY - this.state.offsetY});
+		this.props.updatePanel(this.props.id, {...this.props.panel, x: e.pageX - this.state.offsetX, y: e.pageY - this.state.offsetY});
 	}
 	
 	handleWindowMouseUp = (e) => {

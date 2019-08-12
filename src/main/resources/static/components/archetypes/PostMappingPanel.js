@@ -7,9 +7,9 @@ function PostMappingPanel(props) {
 	
 	return (				
 		<Panel id={props.id} panel={props.panel} updatePanel={props.updatePanel} text={"POST Mapping"} icon={"fas fa-network-wired"} colors={colors}>
-			<Parameter id={props.id} panel={props.panel} updateConnection={props.updateConnection} text={"Path"} color={"#33b5e5"}/>
-			<Parameter id={props.id} panel={props.panel} updateConnection={props.updateConnection} text={"Request"} color={"#00c851"}/>
-			<Value id={props.id} panel={props.panel} updateConnection={props.updateConnection} color={colors.normal}/>
+			<Parameter id={props.id} panel={props.panel} updatePanel={props.updatePanel} text={"Path"} color={"#33b5e5"}/>
+			<Parameter id={props.id} panel={props.panel} updatePanel={props.updatePanel} text={"Request"} color={"#00c851"}/>
+			<Value id={props.id} panel={props.panel} updatePanel={props.updatePanel} color={colors.normal}/>
 		</Panel>
 	);
 }
